@@ -123,7 +123,7 @@ public class CardOk extends Stage {
 						}
             		  
             		  
-					  Thread.sleep(500);
+					  Thread.sleep(200);
 
             		  File file1 = new File("data.txt");
             		  String file1Str = FileUtils.readFileToString(file1);
@@ -133,26 +133,59 @@ public class CardOk extends Stage {
             		  String content = new Scanner(new File("data.txt")).useDelimiter("\\Z").next();
             		  System.out.println("--------------XML File Content Read --------------\n\n" +content);
 
-            		  Thread.sleep(500);
+            		  Thread.sleep(200);
             		  
   					JMS.sendQueueMessage("pinok", content);
+  					
+  					
+  					try {
+						ConsumeMessageResponseCode a = new ConsumeMessageResponseCode();
+					} catch (JMSException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+  					
+					  Thread.sleep(200);
 
+					  String responsecode = new Scanner(new File("data.txt")).useDelimiter("\\Z").next();
+					  System.out.println("response code = " + responsecode +"\n");
+					 
             		  
-//					  if (file1Str.contains("approved")) 
-//		            	{
-//		            		actiontarget.setFill(Color.GREEN);
-//		                    actiontarget.setText("Card correct");
-//		                    actiontarget.setTranslateX(-15);
-//		                    
-//		                    new PinOk();
-//		                    CardOk.this.hide();
-//		            	} 
-//		            	else
-//		            	{
-//		            		actiontarget.setFill(Color.FIREBRICK);
-//		                    actiontarget.setText("Pin incorrect");
-//		                    actiontarget.setTranslateX(-15);
-//		            	};
+					  if (responsecode.equals("100"))
+					  {
+						  actiontarget.setFill(Color.GREEN);
+		                  actiontarget.setText("Card correct");
+		                  actiontarget.setTranslateX(-15);
+		                  
+		                    new PinOk();
+		                    CardOk.this.hide();
+						  
+					  }
+					  if (responsecode.equals("101"))
+					  {
+						  actiontarget.setFill(Color.FIREBRICK);
+		                  actiontarget.setText("Card expired");
+		                  actiontarget.setTranslateX(-15);
+					  }
+					  if (responsecode.equals("102"))
+					  {
+						  actiontarget.setFill(Color.FIREBRICK);
+		                  actiontarget.setText("Card blocked");
+		                  actiontarget.setTranslateX(-15);
+					  }
+					  if (responsecode.equals("103"))
+					  {
+						  actiontarget.setFill(Color.FIREBRICK);
+		                  actiontarget.setText("Wrong pin");
+		                  actiontarget.setTranslateX(-15);
+					  }
+					  if (responsecode.equals("104"))
+					  {
+						  actiontarget.setFill(Color.FIREBRICK);
+		                  actiontarget.setText("Wrong pin and card blocked");
+		                  actiontarget.setTranslateX(-15);
+					  }
+					  
 		                
 					  }
 				 catch (FileNotFoundException e1) {
