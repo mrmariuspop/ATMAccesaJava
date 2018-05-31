@@ -93,9 +93,30 @@ public class PinOk extends Stage {
         hbtnExit.getChildren().add(btnExit);
         grid.add(hbtnExit, 1, 2);
         
+        Button btnBack = new Button("Back");
+        btnBack.setTranslateX(-20);
+        btnBack.setTranslateY(0);
+        HBox hbtnBack = new HBox(10);
+        hbtnBack.setAlignment(Pos.BOTTOM_RIGHT);
+        hbtnBack.getChildren().add(btnBack);
+        grid.add(hbtnBack, 2, 3);
+        
+
         final Text actiontarget = new Text();
         grid.add(actiontarget, 1, 6);
 
+        btnBack.setOnAction(new EventHandler<ActionEvent>()
+        {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				new CardOk();
+				PinOk.this.hide();
+			}
+        	
+        });
+        
         btnExit.setOnAction(new EventHandler<ActionEvent>()
         {
 
