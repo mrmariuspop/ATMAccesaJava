@@ -23,7 +23,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception
 	{
-		new Widhraw();
+		new Login();
 	}
 	public static void main(String[] args) {
 	
