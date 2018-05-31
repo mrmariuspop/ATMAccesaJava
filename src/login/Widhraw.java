@@ -2,6 +2,7 @@ package login;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Scanner;
 
 import javax.jms.JMSException;
 
@@ -109,31 +110,37 @@ public class Widhraw extends Stage {
 						}
            		  
            		  
-					  Thread.sleep(500);
+					  Thread.sleep(100);
 
            		  File file1 = new File("data.txt");
            		  String file1Str = FileUtils.readFileToString(file1);
-					
-					  if (file1Str.contains("approved")) 
-		            	{
-		            		actiontarget.setFill(Color.GREEN);
-		                    actiontarget.setText("Transaction approved");
-		                    actiontarget.setTranslateX(-15);
-		                    
-		            	} 
-		            	else
-		            	if(file1Str.contains("NoCash"))
-		            	{
-		            		actiontarget.setFill(Color.FIREBRICK);
-		                    actiontarget.setText("Not enough Cash on ATM");
-		                    actiontarget.setTranslateX(-15);
-		            	}
-		            	else
-		            	{
-		            		actiontarget.setFill(Color.FIREBRICK);
-		                    actiontarget.setText("Not enough Cash on Card");
-		                    actiontarget.setTranslateX(-15);
-		            	};
+           		  
+           		 System.out.println("--------------XML File Content Sent  ------------------\n\n"+file1Str);
+       		  
+	       		  String content = new Scanner(new File("data.txt")).useDelimiter("\\Z").next();
+	       		  System.out.println("--------------XML File Content Read --------------\n\n" +content);
+	
+	       		  Thread.sleep(200);					
+//					  if (file1Str.contains("approved")) 
+//		            	{
+//		            		actiontarget.setFill(Color.GREEN);
+//		                    actiontarget.setText("Transaction approved");
+//		                    actiontarget.setTranslateX(-15);
+//		                    
+//		            	} 
+//		            	else
+//		            	if(file1Str.contains("NoCash"))
+//		            	{
+//		            		actiontarget.setFill(Color.FIREBRICK);
+//		                    actiontarget.setText("Not enough Cash on ATM");
+//		                    actiontarget.setTranslateX(-15);
+//		            	}
+//		            	else
+//		            	{
+//		            		actiontarget.setFill(Color.FIREBRICK);
+//		                    actiontarget.setText("Not enough Cash on Card");
+//		                    actiontarget.setTranslateX(-15);
+//		            	};
 					  }
 				 catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block

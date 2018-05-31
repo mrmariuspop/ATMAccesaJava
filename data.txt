@@ -1,1 +1,7 @@
-104
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <atm_number>1</atm_number>
+    <card_id>1</card_id>
+    <response_code>203</response_code>
+    <response_text>withdraw number reached</response_text>
+</root>
